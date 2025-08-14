@@ -1,0 +1,39 @@
+2025-08-14 09:44:51,987 - utils.observer - INFO - [CalculatorAgent] THINKING: Received calculation task from orchestrator
+2025-08-14 09:44:51,987 - utils.observer - INFO - [CalculatorAgent] ACTION: Analyzing request to extract mathematical expression
+2025-08-14 09:44:55,772 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-08-14 09:44:56,861 - utils.observer - INFO - [CalculatorAgent] THINKING: Extracted expression: 15 * 8 + 42
+2025-08-14 09:44:56,862 - utils.observer - INFO - [CalculatorAgent] ACTION: Performing calculation
+2025-08-14 09:45:51,203 - utils.observer - INFO - [System] THINKING: Initializing multi-agent system
+2025-08-14 09:45:51,203 - utils.observer - INFO - [System] ACTION: Building LangGraph workflow
+2025-08-14 09:45:51,204 - utils.observer - INFO - [System] THINKING: Multi-agent system initialized successfully
+2025-08-14 09:45:51,204 - utils.observer - INFO - [System] ACTION: Ready to process requests
+2025-08-14 09:45:51,204 - utils.observer - INFO - [System] THINKING: Processing user request: Calculate 12 * 7
+2025-08-14 09:45:51,204 - utils.observer - INFO - [System] ACTION: Starting workflow execution
+2025-08-14 09:45:51,208 - utils.observer - INFO - [Orchestrator] THINKING: Analyzing user request to determine which sub-agents to involve
+2025-08-14 09:45:51,208 - utils.observer - INFO - [Orchestrator] THINKING: Error in analysis: OpenAI API key is required for OpenAI models. Set OPENAI_API_KEY environment variable or pass it to ModelConfig.
+2025-08-14 09:45:51,208 - utils.observer - INFO - [Orchestrator] ACTION: Ending with error
+2025-08-14 09:46:12,627 - utils.observer - INFO - [System] THINKING: Initializing multi-agent system
+2025-08-14 09:46:12,628 - utils.observer - INFO - [System] ACTION: Building LangGraph workflow
+2025-08-14 09:46:12,628 - utils.observer - INFO - [System] THINKING: Multi-agent system initialized successfully
+2025-08-14 09:46:12,628 - utils.observer - INFO - [System] ACTION: Ready to process requests
+2025-08-14 09:46:12,628 - utils.observer - INFO - [System] THINKING: Processing user request: Calculate 12 * 7
+2025-08-14 09:46:12,628 - utils.observer - INFO - [System] ACTION: Starting workflow execution
+2025-08-14 09:46:12,632 - utils.observer - INFO - [Orchestrator] THINKING: Analyzing user request to determine which sub-agents to involve
+2025-08-14 09:46:17,687 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-08-14 09:46:35,674 - utils.observer - INFO - [Orchestrator] THINKING: Analysis result: Here's the analysis:
+
+* We don't need to get weather information (weather_agent) because this is a simple arithmetic calculation.
+* We don't need to generate or send email content (email_agent) because this request doesn't involve sending an email.
+* Neither weather nor email tasks are needed, as this is just a basic math operation.
+
+Here's the JSON response:
+
+{
+"needs_weather": false,
+"needs_email": false,
+"reasoning": "This is a simple arithmetic calculation and does not require any weather or email-related tasks.",
+"next_agent": "end"
+}
+2025-08-14 09:46:35,674 - utils.observer - INFO - [Orchestrator] THINKING: General query detected - providing direct response
+2025-08-14 09:46:35,674 - utils.observer - INFO - [Orchestrator] ACTION: Preparing response message
+2025-08-14 09:46:36,943 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
