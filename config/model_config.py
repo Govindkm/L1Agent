@@ -6,10 +6,17 @@ Supports both OpenAI and Ollama models.
 import os
 from typing import Literal, Optional, Union
 from enum import Enum
+from dotenv import load_dotenv
 
 from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
 from langchain_core.language_models import BaseChatModel
+from strands.models.ollama import OllamaModel
+from strands.models.openai import OpenAIModel
+from strands.models import Model
+
+# Load environment variables
+load_dotenv()
 
 
 class ModelProvider(Enum):
@@ -70,6 +77,29 @@ class ModelConfig:
         else:
             raise ValueError(f"Unsupported model provider: {self.provider}")
     
+    def create_strands_model(self) -> Model:
+        """Create and return the configured Strands model instance"""
+        if self.provider == ModelProvider.OPENAI:
+            return OpenAIModel(
+                model_id=self.model_name,
+                client_args={
+                    "api_key": self.openai_api_key,
+                },
+                params={
+                    "temperature": self.temperature,
+                    "max_tokens": 2048
+                }
+            )
+        
+        elif self.provider == ModelProvider.OLLAMA:
+            return OllamaModel(
+                host=self.ollama_base_url,
+                model_id=self.model_name,
+            )
+        
+        else:
+            raise ValueError(f"Unsupported model provider: {self.provider}")
+
     def __str__(self) -> str:
         return f"ModelConfig(provider={self.provider.value}, model={self.model_name})"
 
@@ -88,8 +118,16 @@ def get_model_config() -> ModelConfig:
     """Get the current global model configuration"""
     global _global_model_config
     if _global_model_config is None:
-        # Default to OpenAI if no config set
-        _global_model_config = ModelConfig()
+        # Read provider from environment variables
+        provider_env = os.getenv("MODEL_PROVIDER", "openai").lower()
+        model_name_env = os.getenv("OLLAMA_MODEL") if provider_env == "ollama" else None
+        ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        
+        _global_model_config = ModelConfig(
+            provider=provider_env,
+            model_name=model_name_env,
+            ollama_base_url=ollama_base_url
+        )
     return _global_model_config
 
 
@@ -98,6 +136,10 @@ def get_model() -> BaseChatModel:
     config = get_model_config()
     return config.create_model()
 
+def get_strands_model() -> Model:
+    """Get the configured Strands model instance"""
+    config = get_model_config()
+    return config.create_strands_model()
 
 def configure_openai_model(
     model_name: str = "gpt-4o-mini",

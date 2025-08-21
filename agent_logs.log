@@ -37,3 +37,33 @@ Here's the JSON response:
 2025-08-14 09:46:35,674 - utils.observer - INFO - [Orchestrator] THINKING: General query detected - providing direct response
 2025-08-14 09:46:35,674 - utils.observer - INFO - [Orchestrator] ACTION: Preparing response message
 2025-08-14 09:46:36,943 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-08-20 15:02:40,104 - utils.observer - INFO - [CalculatorAgent] THINKING: Received calculation task from orchestrator
+2025-08-20 15:02:40,105 - utils.observer - INFO - [CalculatorAgent] ACTION: Analyzing request to extract mathematical expression
+2025-08-20 15:02:40,146 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 404 Not Found"
+2025-08-20 15:02:40,146 - utils.observer - INFO - [CalculatorAgent] THINKING: Error processing calculation: model "llama3:latest" not found, try pulling it first (status code: 404)
+2025-08-20 15:02:40,146 - utils.observer - INFO - [CalculatorAgent] ACTION: Returning error message
+2025-08-20 15:04:05,067 - utils.observer - INFO - [CalculatorAgent] THINKING: Received calculation task from orchestrator
+2025-08-20 15:04:05,067 - utils.observer - INFO - [CalculatorAgent] ACTION: Analyzing request to extract mathematical expression
+2025-08-20 15:04:05,380 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 500 Internal Server Error"
+2025-08-20 15:04:05,380 - utils.observer - INFO - [CalculatorAgent] THINKING: Error processing calculation: model requires more system memory (12.9 GiB) than is available (11.8 GiB) (status code: 500)
+2025-08-20 15:04:05,380 - utils.observer - INFO - [CalculatorAgent] ACTION: Returning error message
+2025-08-20 15:09:10,689 - utils.observer - INFO - [CalculatorAgent] THINKING: Received calculation task from orchestrator
+2025-08-20 15:09:10,689 - utils.observer - INFO - [CalculatorAgent] ACTION: Analyzing request to extract mathematical expression
+2025-08-20 15:09:18,912 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-08-20 15:09:20,865 - utils.observer - INFO - [CalculatorAgent] THINKING: Extracted expression: "23% * 4345.32"
+2025-08-20 15:09:20,866 - utils.observer - INFO - [CalculatorAgent] ACTION: Performing calculation
+2025-08-20 15:11:27,416 - utils.observer - INFO - [CalculatorAgent] THINKING: Received calculation task from orchestrator
+2025-08-20 15:11:27,417 - utils.observer - INFO - [CalculatorAgent] ACTION: Analyzing request to extract mathematical expression
+2025-08-20 15:11:31,791 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-08-20 15:11:33,627 - utils.observer - INFO - [CalculatorAgent] THINKING: Extracted expression: "3456/65 * 23%"
+2025-08-20 15:11:33,627 - utils.observer - INFO - [CalculatorAgent] ACTION: Performing calculation
+2025-08-20 15:12:02,345 - utils.observer - INFO - [CalculatorAgent] THINKING: Received calculation task from orchestrator
+2025-08-20 15:12:02,346 - utils.observer - INFO - [CalculatorAgent] ACTION: Analyzing request to extract mathematical expression
+2025-08-20 15:12:06,238 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-08-20 15:12:07,928 - utils.observer - INFO - [CalculatorAgent] THINKING: Extracted expression: "23 * 3 + 231"
+2025-08-20 15:12:07,929 - utils.observer - INFO - [CalculatorAgent] ACTION: Performing calculation
+2025-08-20 15:14:08,244 - utils.observer - INFO - [CalculatorAgent] THINKING: Received calculation task from orchestrator
+2025-08-20 15:14:08,244 - utils.observer - INFO - [CalculatorAgent] ACTION: Analyzing request to extract mathematical expression
+2025-08-20 15:14:12,082 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-08-20 15:14:13,770 - utils.observer - INFO - [CalculatorAgent] THINKING: Extracted expression: 93 * 200 / 100
+2025-08-20 15:14:13,770 - utils.observer - INFO - [CalculatorAgent] ACTION: Performing calculation

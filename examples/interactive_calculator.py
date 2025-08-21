@@ -42,7 +42,7 @@ class InteractiveCalculator:
         # Configure Ollama model
         print("🔧 Configuring Ollama model...")
         try:
-            configure_ollama_model("llama3:latest")
+            configure_ollama_model("qwen2.5")
             print("✅ Model configured successfully!")
         except Exception as e:
             print(f"❌ Model configuration failed: {e}")
